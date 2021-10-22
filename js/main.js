@@ -1,37 +1,31 @@
-var i = 1007,
-   script = document.getElementById('script'),
+var btn = document.getElementById('btn'),
+   i = 1007,
    timer,
+   content = document.getElementById('content'),
    music = new Audio('./ghoul.mp3');
 
-
-
-document.getElementById('btn').onclick = function () {
-   timer = setInterval(ghoul, 50)
+btn.onclick = function () {
+   document.getElementById('video').style.display = "block";
    ghoulMusic();
+   timer = setInterval(ghoul, 125)
 }
 
 
 function ghoulMusic() {
    music.play();
 }
-
 function ghoul() {
    i -= 7;
    let p = document.createElement('p');
-   script.append(p)
-   p.innerHTML = i + ' - 7';
-   scrolldown(script.lastChild);
+   content.append(p);
+   p.innerHTML = i + ' - 7'
+   scrolldown(content.lastChild);
    if (i <= 6) {
       clearInterval(timer);
-      music.pause();
-      script.style.background = "none";
-      close();
+      window.location.reload();
    }
 }
-function close() {
-   script.innerHTML = "";
-   window.location.reload();
-}
+
 
 function scrolldown(e) {
    window.scroll({
